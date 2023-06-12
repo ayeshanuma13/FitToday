@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+body{
+    height:100vh;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    font-family:'Montserrat','sans-serif';
+    background:#09010c;
+    color:#ffff;
+}
+
+body::before{
+    content:'';
+    position:absolute;
+    z-index:-1;
+    border-radius:50%;
+    width:15rem;
+    aspect-ratio:1/1;
+    filter:blur(50px);
+    background:#650859;
+}
+
+body::before{
+    top:-5rem;
+    left:-5rem;
+}
+
+body::after{
+    top:unset;
+    left:unset;
+    bottom:-5rem;
+    right:-5rem;
+}
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding-top:1rem;
+    padding-inline:15%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:-1;
+}
+
+header img{
+    width:10rem;
+}
+
+header nav{
+    display:flex;
+    gap:.5rem;
+    justify-content:space-between;
+    align-items:center;
+}
+
+header nav a{
+    text-decoration:none;
+    color:inherit;
+    font-size:.9rem;
+    text-transform:capitalize;
+    border-radius:100vw;
+    padding:.5rem .1rem;
+    transition:0.3s ease;
+}
+
+header nav a:hover{
+    cursor:pointer;
+    background-color:#a21b74;
+}
+
+.active{
+    background-color:#a21b74;
+}
+
+.mainimg{
+    position:absolute;
+    width:37rem;
+    bottom:0;
+    top:4rem;
+    right:3rem;
+}
+
+section{
+    position: absolute;
+    inset:0;
+    display:flex;
+    align-items: center;
+}
+
+section .content{
+    padding-left:10%;
+    width: 620px;
+}
+
+section .content h1{
+    font-size:4rem;
+    text-transform:uppercase;
+}
+
+.buttonholder{
+    display:flex;
+    gap:1rem;
+    margin-bottom: 1rem;
+}
+
+.buttonholder button{
+    background: transparent;
+    color:#ffff;
+    border-radius:100vw;
+    border:2px solid #7522a2;
+    padding: .5rem 1.5rem;
+    cursor:pointer;
+    transition: .3s ease;
+}
+
+.start_options{
+    display:none;
+    position:absolute;
+    top:75%;
+    left:125;
+    padding:10px;
+
+}
+
+.option{
+    display:block;
+}
+
+.buttonholder button:hover{
+    background-color: #a21b74;
+}
+
+.show-options {
+    display: block !important;
+    transition: 1s ease;
+  }
+
+
+
+

@@ -1,0 +1,116 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/wp_details.css')}}">
+<!DOCTYPE html>
+{%extends 'base.html'%}
+<!-- {%include 'navbar.html'%} -->
+{%block title%}Workout Plans | FitToday{%endblock%}
+{%block content%}
+
+<head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body>
+
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <span class="logo"><img src="{{url_for('static',filename='/images/logo.png')}}"></span>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/dashboard"><span class="las la-home"></span>
+                    <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="/workout"  class="active"><span class="las la-dumbbell"></span>
+                    <span>Workout Plans</span></a>
+                </li>
+                <li>
+                    <a href="/exercise"><span class="las la-clipboard-list"></span>
+                    <span>Exercise Library</span></a>
+                </li>
+                <li>
+                    <a href="/progress"><span class="las la-chart-bar"></span>
+                    <span>My Progress</span></a>
+                </li>
+                <li>
+                    <a href="/profile"><span class="las la-user"></span>
+                    <span>My Profile</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        
+        <header>
+            <h2 class="headerdash">
+            <label for="nav-toggle">
+                <span class="las la-bars"></span>
+            </label>
+            {{workoutplan[0][1]}}
+            </h2>
+
+            <div class="user-wrapper">
+            <img src="{{url_for('static',filename='/images/user.png')}}" width="35px" height="35px" alt="">
+            <div class="uname">
+                <h4>{{session['username']}}</h4>
+            </div>
+            </div>
+        </header>
+
+        <div class="transparentbg">
+
+            <div class="workout-container">
+                <h2>Workout Plan: {{workoutplan[0][1]}}</h2>
+                <p>Time: {{workoutplan[0][2]}}</p>
+                <p>Intensity: {{workoutplan[0][3]}}</p>
+            </div>
+
+            <h3>Exercises:</h3>
+            <div class="exercise-container">
+
+                {%for exercise in exercise_details%}
+
+                    <div class="exercise-card">
+                    
+                        <h4>{{exercise[1]}}</h4>
+                        <div class="deets">
+                            <p>Time: {{exercise[2]}}</p>
+                            <p>Intensity: {{exercise[3]}}</p>
+                            <p>Description: {{exercise[4]}}</p>
+                            <p>Reps: {{exercise[5]}}</p>
+                        </div>
+
+                        <form action="/workout_plan/{{plan_id}}" method ="POST">
+                        
+                        <input type="text" name="exercise_id" value="{{exercise[0]}}" hidden>
+                        <div class="removediv">
+                        <button class="removebtn" id="{{exercise[0]}}" name="action" value="remove">Remove</button>
+                        </div>
+                        </form>
+
+                    </div>
+                    
+                {%endfor%}
+
+            </div>
+                
+            
+
+            <form action="/workout_plan/{{plan_id}}" method="POST">
+                <button class="workoutDone" type="submit" name="action" value="done">Done</button>
+                <select id="exercises" name="exercise_id">
+                    {%for exercise in exercise_dropdown%}
+                    <option value="{{exercise[0]}}">{{exercise[1]}}</option>
+                    {%endfor%}
+                </select> 
+                
+                <button class="workoutAdd" type="submit" name="action" value="add">Add</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+{%endblock%}

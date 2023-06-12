@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/login.css')}}">
+<!DOCTYPE html>
+{%block title%}Login | FitToday{%endblock%}
+{%block content%}
+<header>
+<a href="/home" class="logo">
+    <img src="{{url_for('static',filename='/images/logo.png')}}">
+</a>
+</header>
+
+<body>
+    <div class="container">
+        <!-- <p style="color:red;"></p> -->
+        <div class="form-box">
+            <form action="/login" name="signup" method="POST" onsubmit="return validation()">
+                <h2>Login</h2>
+                <p id="result">{{error}}</p>
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="button">
+                    <button name="action" class="btn" type="submit" value="godashboard">Login</button>
+                </div>
+            </form>
+        </div>
+
+        {% block javascript %}
+        <script src="{{ url_for('static',filename='signup.js') }}"></script>
+        {%endblock%}
+    </div>
+
+</body>
+
+{%endblock%}

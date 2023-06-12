@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/homepagestyle.css')}}">
+{%extends 'base.html'%}
+<!DOCTYPE html>
+{%block title%}Home | FitToday{%endblock%}
+{%block content%}
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <a href="" class="logo">
+        <img src="{{url_for('static',filename='/images/logo.png')}}">
+    </a>
+    <nav>
+        <a href="" class="active">Home</a>
+        <!-- <a href="">Why us?</a>
+        <a href="">Testimonials</a>
+        <a href="">About us</a> -->
+    </nav>
+
+</header>
+
+<section>
+    <img src="{{url_for('static',filename='/images/HomeBg.jpg')}}" alt="" class="mainimg">
+</section>
+<section>
+<div class="content">
+    <h1> GET FIT TODAY</h1>
+    <p>
+        Fitness goals can be the same for many but the journey to the goal is yours alone.
+        We provide the best platform for you to design your own personal journey to a healthy lifestyle.
+        Explore our plans curated by the finest fitness coaches and customize it to suite you best!
+    </p>
+    <br>
+    <br>
+    <div class="buttonholder">
+        <button class="start-button" onclick="toggleOptions()">Start Today</button>
+        <div class="start_options">
+            <form action="/home" method="POST">
+            <button class="option" type="submit" name="action" value="login">Login</button>
+            <button class="option" type="submit" name="action" value="signup">Sign up</button>
+        </form>
+        </div>
+    </div>
+</div>
+</section>
+<script src="{{url_for('static',filename='/scripts/homepagescript.js')}}"></script>
+{%endblock%}

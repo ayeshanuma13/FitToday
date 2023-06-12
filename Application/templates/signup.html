@@ -1,0 +1,62 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/signup.css')}}">
+<!DOCTYPE html>
+{%block title%}Sign up | FitToday{%endblock%}
+{%block content%}
+
+<!DOCTYPE html>
+<header>
+    <a href="/home" class="logo">
+        <img src="{{url_for('static',filename='/images/logo.png')}}">
+    </a>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <form action="/signup" method="POST" id="signup-form" onsubmit="return validation()">
+                <h2>Sign up</h2>
+                <p id="result"></p>
+                <div class="input-box">
+                    <input type="text" name="username" id="username" placeholder="Username" minlength="6" required>
+                </div>
+                <div class="input-box">
+                    <input type="email" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" id="password" placeholder="Password" minlength="8" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" name="gender" id="gender" placeholder="Gender (M/F)" pattern="[M,F]" required>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="age" id="age" placeholder="Age" required>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="height" id="height" placeholder="Height" required>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="weight" id="weight" placeholder="Weight Goal" reqired>
+                </div>
+
+                <div class="button">
+                    <input type="submit" class="btn" name="action" value="Signup">
+                </div>
+                <div class="group">
+                    <span><a href="/login">Login</a></span>
+                </div>
+            </form>
+        </div>
+
+        <!--Creating popup value-->
+        <div class="popup" id="popup">
+            <h2>Thank you</h2>
+            <p>You have signed up successfully.<br>
+            Log in and get started on your journey to fitness!</p>
+            <form action="/signup" method="POST">
+            <span><button name="signupok" type="submit" value="trylogin">OK</button></span>
+        </form>
+        </div>
+
+    </div>
+</body>
+
+<script src="{{url_for('static',filename='/scripts/signup.js')}}"></script>
+{%endblock%}

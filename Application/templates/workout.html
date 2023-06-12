@@ -1,0 +1,239 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/workout.css')}}">
+<!DOCTYPE html>
+{%extends 'base.html'%}
+<!-- {%include 'navbar.html'%} -->
+{%block title%}Workout Plans | FitToday{%endblock%}
+{%block content%}
+
+<head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <span class="logo"><img src="{{url_for('static',filename='/images/logo.png')}}"></span>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/dashboard"><span class="las la-home"></span>
+                    <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="/workout" class="active"><span class="las la-dumbbell"></span>
+                    <span>Workout Plans</span></a>
+                </li>
+                <li>
+                    <a href="/exercise"><span class="las la-clipboard-list"></span>
+                    <span>Exercise Library</span></a>
+                </li>
+                <li>
+                    <a href="/progress"><span class="las la-chart-bar"></span>
+                    <span>My Progress</span></a>
+                </li>
+                <li>
+                    <a href="/profile" ><span class="las la-user"></span>
+                    <span>My Profile</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <header>
+             <h2 class="headerdash">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                Workout Plans
+             </h2>
+
+             <div class="user-wrapper">
+                <img src="{{url_for('static',filename='/images/user.png')}}" width="35px" height="35px" alt="">
+                <div class="uname">
+                    <h4>{{session['username']}}</h4>
+                </div>
+             </div>
+        </header>
+
+        <main>
+            <div class="transparentbg">
+                <div class="workout-title">
+                    <h2>Check out our Popular Workout Plans!</h2>
+                </div>
+
+                <div class="container">
+                    <input type="radio" name="slider" id="item-1" checked>
+                    <input type="radio" name="slider" id="item-2">
+                    <input type="radio" name="slider" id="item-3">
+                  <div class="cards">
+                    <label class="card" for="item-1" id="workout-1">
+                      <img src="{{url_for('static',filename='/images/carousel1.jpg')}}" alt="workout1">
+                    </label>
+                    <label class="card" for="item-2" id="workout-2">
+                      <img src="{{url_for('static',filename='/images/carousel2.jpg')}}" alt="workout2">
+                    </label>
+                    <label class="card" for="item-3" id="workout-3">
+                      <img src="{{url_for('static',filename='/images/carousel3.jpg')}}" alt="workout3">
+                    </label>
+
+                  </div>
+                  <div class="player">
+                    <div class="upper-part">
+                      <div class="play-icon">
+                        <svg width="20" height="20" fill="#2992dc" stroke="#2992dc" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-play" viewBox="0 0 24 24">
+                          <defs/>
+                          <path d="M5 3l14 9-14 9V3z"/>
+                        </svg>
+                      </div>
+                      <div class="info-area" id="test">
+                        <label class="workout-info" id="workout-info-1">
+                          <div class="title">Core Blast</div>
+                          <div class="sub-line">
+                            <div class="subtitle">Unleash you Core Power</div>
+                            <div class="time">20:00m</div>
+                          </div>
+                        </label>
+                        <label class="workout-info" id="workout-info-2">
+                          <div class="title">Speed Circuit</div>
+                          <div class="sub-line">
+                            <div class="subtitle">Rev up your Performance</div>
+                            <div class="time">15:00m</div>
+                          </div>
+                        </label>
+                        <label class="workout-info" id="workout-info-3">
+                          <div class="title">Sport Domination</div>
+                          <div class="sub-line">
+                            <div class="subtitle">Play to get Fit</div>
+                            <div class="time">30:00m</div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="progress-bar">
+                      <span class="progress"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+
+                <div class="workoutgrid-title">
+                    <h2>All Workout Plans</h2>
+                </div>
+
+                <br>
+                <br>
+
+                <div class="grid">
+                    <form class="workout-form" action="/workout" method="post">
+                    <div class="grid-items">
+                        <div class="wpcard">
+                            <img class="card-image" src="{{url_for('static',filename='/images/carousel7.jpg')}}">
+                            <div class="wpcard-content">
+                                <h1 class="wpcard-header">PowerFit</h1>
+                                <p class="wpcard-text">
+                                    Unleash your inner strength and maximize your physical potential.<br>
+                                </p>
+                                <span class="wptime">Time: </span>25 minutes<br>
+                                <span class="wpintensity">Intensity: </span> Low<br>
+                                <button class="card-button" type="submit" name="action" value="wp1">Start <span> &rarr;</span></button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-items">
+                        <div class="wpcard">
+                            <img class="card-image" src="{{url_for('static',filename='/images/carousel6.jpg')}}">
+                            <div class="wpcard-content">
+                                <h1 class="wpcard-header">Lean and Strong</h1>
+                                <p class="wpcard-text">
+                                    Sculpt ad tone your body for a lean and strong physique<br>
+                                </p>
+                                <span class="wptime">Time: </span>15 minutes<br>
+                                <span class="wpintensity">Intensity: </span> Moderate<br>
+                                <button class="card-button" type="submit" name="action" value="wp2">Start <span> &rarr;</span></button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-items">
+                        <div class="wpcard">
+                            <img class="card-image" src="{{url_for('static',filename='/images/carousel5.jpg')}}">
+                            <div class="wpcard-content">
+                                <h1 class="wpcard-header">Total Transformation</h1>
+                                <p class="wpcard-text">
+                                    Experience a complete transformation of your body and fitness levels<br>
+                                </p>
+                                <span class="wptime">Time: </span>30 minutes<br>
+                                <span class="wpintensity">Intensity: </span> High<br>
+                                <button class="card-button" type="submit" name="action" value="wp3">Start <span> &rarr;</span></button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-items">
+                        <div class="wpcard">
+                            <img class="card-image" src="{{url_for('static',filename='/images/carousel1.jpg')}}">
+                            <div class="wpcard-content">
+                                <h1 class="wpcard-header">Core Blast</h1>
+                                <p class="wpcard-text">
+                                    Ignite your core muscles with an explosive and targeted workout<br>
+                                </p>
+                                <span class="wptime">Time: </span>20 minutes<br>
+                                <span class="wpintensity">Intensity: </span> High<br>
+                                <button class="card-button" type="submit" name="action" value="wp4">Start <span> &rarr;</span></button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-items">
+                        <div class="wpcard">
+                            <img class="card-image" src="{{url_for('static',filename='/images/carousel2.jpg')}}">
+                            <div class="wpcard-content">
+                                <h1 class="wpcard-header">Speed Circuit</h1>
+                                <p class="wpcard-text">
+                                    Improve speed, agility, and quickness with a challenging circuit workout.<br>
+                                </p>
+                                <span class="wptime">Time: </span>30 minutes<br>
+                                <span class="wpintensity">Intensity: </span> High<br>
+                                <button class="card-button" type="submit" name="action" value="wp5">Start <span> &rarr;</span></button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-items">
+                        <div class="wpcard">
+                            <img class="card-image" src="{{url_for('static',filename='/images/carousel3.jpg')}}">
+                            <div class="wpcard-content">
+                                <h1 class="wpcard-header">Sports Domination</h1>
+                                <p class="wpcard-text">
+                                    Unleash your athletic prowess and dominate your sport with this intensive training program<br>
+                                </p>
+                                <span class="wptime">Time: </span>30 minutes<br>
+                                <span class="wpintensity">Intensity: </span> High<br>
+                                <button class="card-button" type="submit" name="action" value="wp6">Start <span> &rarr;</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    {% block javascript %}
+    <script src="{{ url_for('static',filename='workout.js') }}"></script>
+    {%endblock%}
+</body>
+
+{%endblock%}

@@ -1,0 +1,119 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/profile.css')}}">
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block title%}Profile | FitToday{%endblock%}
+{%block content%}
+
+<head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <span class="logo"><img src="{{url_for('static',filename='/images/logo.png')}}"></span>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/dashboard"><span class="las la-home"></span>
+                    <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="/workout"><span class="las la-dumbbell"></span>
+                    <span>Workout Plans</span></a>
+                </li>
+                <li>
+                    <a href="/exercise"><span class="las la-clipboard-list"></span>
+                    <span>Exercise Library</span></a>
+                </li>
+                <li>
+                    <a href="/progress"><span class="las la-chart-bar"></span>
+                    <span>My Progress</span></a>
+                </li>
+                <li>
+                    <a href="/profile" class="active"><span class="las la-user"></span>
+                    <span>My Profile</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+             <h2 class="headerdash">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                My Profile
+             </h2>
+
+             <div class="user-wrapper">
+                <img src="{{url_for('static',filename='/images/user.png')}}" width="35px" height="35px" alt="">
+                <div class="uname">
+                    <h4>{{session['username']}}</h4>
+                </div>
+             </div>
+        </header>
+
+        <main>
+            <div class="transparentbg">
+
+                {%for data in details%}
+
+                <div class="container1">
+                    <img src="{{url_for('static',filename='/images/user.png')}}" class="user-img">
+                    <div class="profile-details">
+                        <h1>My Profile</h1>
+                        <div class="profile-container">
+
+                            
+                                <div class="profile-content">
+                                    <div class="label">Username</div>
+                                    <div class="data">{{data[1]}}</div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="label">Email</div>
+                                    <div class="data">{{data[2]}}</div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="label">Gender</div>
+                                    <div class="data">{{data[4]}}</div>
+                                </div>
+                            
+
+                                <div class="profile-content">
+                                    <div class="label">Age</div>
+                                    <div class="data">{{data[5]}}</div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="label">Height</div>
+                                    <div class="data">{{data[6]}}</div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="label">Weight Goal</div>
+                                    <div class="data">{{data[7]}}</div>
+                                </div>
+        
+                        </div>
+
+                    <div class="buttons">
+                        <form action="/profile" method="post">
+                            <input type="hidden" name="userid" value="{{session['userid']}}">
+                            <button class="ProfileOptions" type="submit" name="action" value="editProfile">Edit Profile</button>
+                            <button class="ProfileOptions" type="submit" name="action" value="logout">Log out</button>
+                        </form>
+                    </div>
+                </div>
+                {%endfor%}
+
+
+            </div>
+        </main>
+
+    </div>
+
+</body>
+
+{%endblock%}

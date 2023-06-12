@@ -1,0 +1,86 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/update_profile.css')}}">
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%include 'navbar.html'%}
+{%block title%}Update User Profile | FitToday{%endblock%}
+{%block content%}
+
+<head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body>
+    <div class="main-content">
+        <header>
+             <h2 class="headerdash">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                My Profile
+             </h2>
+
+             <div class="user-wrapper">
+                <img src="{{url_for('static',filename='/images/user.png')}}" width="35px" height="35px" alt="">
+                <div class="uname">
+                    <h4>{{session['username']}}</h4>
+                </div>
+             </div>
+        </header>
+
+        <main>
+            <div class="transparentbg">
+
+                {%for data in details%}
+
+                <div class="container1">
+                    <div class="profile-details">
+                        <h1>Update Profile</h1>
+                        <br>
+                        <br>
+                        <form action="/editprofile" method="post">
+                        <div class="profile-content">
+                            <div class="label">Username</div>
+                            <div class="data"><input type="text" class="data" name="username" value="{{data[1]}}"></div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="label">Email</div>
+                            <div class="data"><input type="text" class="data" name="email" value="{{data[2]}}"></div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="label">Password</div>
+                            <div class="data"><input type="password" class="data" name="password" value="{{data[3]}}"></div>
+                        </div>
+                    
+                        <div class="profile-content">
+                            <div class="label">Gender</div>
+                            <div class="data"><input type="text" class="data" name="gender" value="{{data[4]}}"></div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="label">Age</div>
+                            <div class="data"><input type="text" class="data" name="age" value="{{data[5]}}"></div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="label">Height</div>
+                            <div class="data"><input type="text" class="data" name="height" value="{{data[6]}}"></div>
+                        </div>
+                        <div class="profile-content">
+                            <div class="label">Weight Goal</div>
+                            <div class="data"><input type="text" class="data" name="weight" value="{{data[7]}}"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="buttons">
+                        
+                            <input type="hidden" name="userid" value="{{session['userid']}}">
+                            <button class="editProfile" type="submit" name="action" value="editProfile">Done</button>
+                        </form>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </main>
+
+    </div>
+</body>
+{%endblock%}

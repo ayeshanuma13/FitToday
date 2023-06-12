@@ -1,0 +1,99 @@
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='/styles/exercise.css')}}">
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block title%}Exercise Library | FitToday{%endblock%}
+{%block content%}
+
+<head>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body>
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <span class="logo"><img src="{{url_for('static',filename='/images/logo.png')}}"></span>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/dashboard"><span class="las la-home"></span>
+                    <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="/workout"><span class="las la-dumbbell"></span>
+                    <span>Workout Plans</span></a>
+                </li>
+                <li>
+                    <a href="/exercise" class="active"><span class="las la-clipboard-list"></span>
+                    <span>Exercise Library</span></a>
+                </li>
+                <li>
+                    <a href="/progress"><span class="las la-chart-bar"></span>
+                    <span>My Progress</span></a>
+                </li>
+                <li>
+                    <a href="/profile"><span class="las la-user"></span>
+                    <span>My Profile</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+             <h2 class="headerdash">
+                <label for="nav-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+                Exercise Library
+             </h2>
+
+             <div class="user-wrapper">
+                <img src="{{url_for('static',filename='/images/user.png')}}" width="35px" height="35px" alt="">
+                <div class="uname">
+                    <h4>{{session['username']}}</h4>
+                </div>
+             </div>
+        </header>
+
+        <main>
+            <div class="transparentbg">
+                <!--HERE-->
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <td>Exercise ID</td>
+                            <td>Exercise Name</td>
+                            <td>Time</td>
+                            <td>Intensity</td>
+                            <td>Description</td>
+                            <td>Reps</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for exercise in exercise_details%}
+                        <tr>
+                            <td>{{exercise[0]}}</td>
+                            <td>{{exercise[1]}}</td>
+                            <td>{{exercise[2]}}</td>
+                            <td>{{exercise[3]}}</td>
+                            <td>{{exercise[4]}}</td>
+                            <td>{{exercise[5]}}</td>
+                            <!-- <td>
+                                <span class="intensity red"></span>
+                                High
+                            </td> -->
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+
+            </div>
+        </main>
+
+    </div>
+
+</body>
+
+{%endblock%}

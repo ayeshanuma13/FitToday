@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    list-style-type:none;
+    text-decoration:none;
+    font-family:'Montserrat','sans-serif';
+}
+
+.sidebar{
+    width:345px;
+    position:fixed;
+    left:0;
+    top:0;
+    height:100%;
+    background:#a21b74;
+    z-index:100;
+    transition:width 300ms;
+}
+
+.sidebar-brand img{
+    width:10rem;
+    padding:1rem 0rem 1rem 2rem;
+}
+
+.sidebar-menu li{
+    width:100%;
+    margin-bottom:1.7rem;
+    padding-left:1rem;
+}
+
+.sidebar-menu a{
+    padding-left:1rem;
+    padding-top:.7rem;
+    padding-bottom:.7rem;
+    display:block;
+    color:black;
+    font-size:1.1rem;
+    font-weight:bold;
+}
+
+.sidebar-menu a.active{
+    background:#e3c114;
+    padding-top:.7rem;
+    padding-bottom:.7rem;
+    border-radius:30px 0px 0px 30px;
+}
+
+.sidebar-menu a:hover{
+    background:#e3c114;
+    padding-top:.7rem;
+    padding-bottom:.7rem;
+    border-radius:30px 0px 0px 30px;
+}
+
+.sidebar-menu a span:first-child{
+    font-size:1.5rem;
+    padding-right:1rem;
+}
+
+#nav-toggle:checked~ .sidebar{
+    width:70px;
+}
+
+#nav-toggle:checked~.sidebar .sidebar-brand,
+#nav-toggle:checked~.sidebar li{
+    padding-left:1rem;
+    text-align:center;
+}
+
+#nav-toggle:checked~.sidebar li a{
+    padding-left:0rem;
+}
+
+#nav-toggle:checked~.sidebar .sidebar-brand span img,
+#nav-toggle:checked~.sidebar li a span:last-child{
+    display:none;
+}
+
+#nav-toggle:checked ~ .main-content{
+    margin-left:70px;
+    background:url(/static/images/MainBg.png)repeat;
+}
+
+/* #nav-toggle:checked .container{
+    right:500px;
+} */
+
+#nav-toggle:checked ~ .main-content header{
+    /*width:calc(100%-70px);*/
+    width:96%;
+    left:70px;
+}
+
+.main-content{
+    transition:margin-left 300ms;
+    margin-left:345px;
+    background:#09010c;
+}
+
+
+header{
+    display:flex;
+    justify-content: space-between;
+    padding:1rem 1.5rem;
+    box-shadow:2px 2px 5px rgba(0,0,0,0.2);
+    background: black ;
+    color:white;
+    position:fixed;
+    left:345px;
+    width:calc(100% - 345px);
+    top:0;
+    z-index:100;
+    transition:left 300ms;
+}
+
+#nav-toggle{
+    display:none;
+}
+
+
+header h2{
+    color:#cfc9c9;
+}
+
+header label span{
+    font-size:1.7rem;
+    padding-right:1rem;
+}
+
+
+.user-wrapper{
+    display:flex;
+    align-items:center;
+}
+
+
+.user-wrapper img{
+    margin-right:1rem;
+    border-radius:50%;
+    outline:1px solid #ccc;
+}
+
+main{
+    color: white;
+    margin-top:50px;
+    padding:2rem 1.5rem;
+    background:#09010c;
+    /*background:#09010c;*/
+    min-height:calc(100vh - 90px);
+    
+}
+
+.transparentbg{
+    background:#09010c;
+    backdrop-filter:blur(5px);
+}
+
+
+/*workout css*/
+
+.workout-title{
+    display:flex;
+    margin-top:2%;
+    align-items:center;
+    justify-content:center;
+    padding: 2px 2px;
+}
+
+
+
+/*CAROUSEL CSS STARTS*/
+
+
+input[type=radio] {
+    display: none;
+}
+
+.card {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: transform .4s ease;
+    cursor: pointer;
+}
+
+.container {
+    margin-top:5%;
+    margin-left:60px;
+    width: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+#item-1:checked ~ .cards #workout-3, #item-2:checked ~ .cards #workout-1, #item-3:checked ~ .cards #workout-2 {
+  transform: translatex(-40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #workout-2, #item-2:checked ~ .cards #workout-3, #item-3:checked ~ .cards #workout-1 {
+  transform: translatex(40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #workout-1, #item-2:checked ~ .cards #workout-2, #item-3:checked ~ .cards #workout-3 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+.player {
+  background-color:#403d40;
+  border-radius: 8px;
+  min-width: 320px;
+  padding: 16px 10px;
+}
+
+.upper-part {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.play-icon{ margin-right: 10px; }
+
+.workout-info {
+  width: calc(100% - 32px);
+  display: block;
+}
+
+.workout-info .title {
+  color:white;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.sub-line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.subtitle, .time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #c6c5c6;
+}
+
+.time {
+  font-size: 12px;
+  line-height: 16px;
+  color: #a5a5a5;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+.progress-bar {
+  height: 3px;
+  width: 100%;
+  background-color: #e9efff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress {
+  display: block;
+  position: relative;
+  width: 60%;
+  height: 100%;
+  background-color: #2992dc;
+  border-radius: 6px;
+}
+
+.info-area {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  transition: transform .4s ease-in;
+}
+
+#item-2:checked ~ .player #test {
+  transform: translateY(0);
+}
+
+#item-2:checked ~ .player #test  {
+  transform: translateY(-40px);
+}
+
+#item-3:checked ~ .player #test  {
+  transform: translateY(-80px);
+}
+
+/*CAROUSEL CSS ENDS*/
+
+/*CARDS CSS STARTS*/
+
+.workoutgrid-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 2px 2px;
+
+}
+
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+
+.grid-items {
+  /* flex-basis: calc(33.33% - 20px); */
+  flex:1;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  margin-left:50px;
+  width:100%;
+}
+
+.wpcard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  height:30%
+}
+
+.card-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.wpcard-content {
+  margin-top: 10px;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wpcard-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.wpcard-text {
+  margin-bottom: 10px;
+}
+
+.wptime,
+.wpintensity {
+  font-weight: bold;
+  color:#a21b74;
+}
+
+.card-button {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#a21b74;;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+  background-color:#701251;
+}
+
